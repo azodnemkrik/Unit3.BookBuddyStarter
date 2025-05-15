@@ -20,7 +20,6 @@ body {
 .book {
   display: flex;
   flex-direction: column;
-  gap: 0;
   border:1px solid black;
   justify-content: start;
   align-items: center;
