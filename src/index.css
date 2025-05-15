@@ -12,6 +12,35 @@ body {
 
 /* Add your own custom styles here */
 
+.booksContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.book {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border:1px solid black;
+  justify-content: start;
+  align-items: center;
+  text-align: center;
+  line-height: 1rem;
+  width: 20rem;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.book > img {
+    width: 250px;
+    /* height: 325px; */
+}
+
+.book > .description {
+  text-wrap: wrap;
+  /* width: 200px; */
+}
+
 .accountComponent {
   background-color: red;
 }

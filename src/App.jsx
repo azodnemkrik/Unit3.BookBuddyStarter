@@ -16,14 +16,15 @@ function App() {
 	useEffect(()=>{
 		const fetchBooks = async () => {
 			try {
-				const data = await axios.get("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books")
+				const { data } = await axios.get("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books")
 				console.log(data)
+				setAllBooks(data)
 			} catch (error) {
 				console.error(error)
 			}
 		}
 		fetchBooks()
-	})
+	}, [])
 
 	return (
 		<div>
@@ -38,7 +39,9 @@ function App() {
 			</div>
 
 			<Routes>
-				<Route path="/" element={<Books />} />
+				<Route path="/" element={<Books allBooks={allBooks}/>} />
+				<Route path="/books" element={<Books allBooks={allBooks}/>} />
+				<Route path="/books/:id" element={<SingleBook allBooks={allBooks}/>} />
 			</Routes>
 		</div>
 	)
