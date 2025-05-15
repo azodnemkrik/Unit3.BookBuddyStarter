@@ -11,3 +11,27 @@ body {
 }
 
 /* Add your own custom styles here */
+
+.accountComponent {
+  background-color: red;
+}
+
+.booksComponent {
+  background-color: orange;
+}
+
+.loginComponent {
+  background-color: yellow;
+}
+
+.navigationsComponent {
+  background-color: green;
+}
+
+.registerComponent {
+  background-color: blue;
+}
+
+.singleBookComponent {
+  background-color: indigo;
+}

@@ -1,6 +1,6 @@
 const Navigations = () => {
 	return (
-		<div>
+		<div className="navigationsComponent">
 			<h1>Navigations Component</h1>
 			<hr />
 		</div>
