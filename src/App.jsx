@@ -11,12 +11,12 @@ function App() {
 
 	return (
 		<div>
-			<Account/>
+			{/* <Account/> */}
 			<Books/>
-			<Login/>
-			<Navigations/>
-			<Register/>
-			<SingleBook/>			
+			{/* <Login/> */}
+			{/* <Navigations/> */}
+			{/* <Register/> */}
+			{/* <SingleBook/>			 */}
 		</div>
 	)
 }
