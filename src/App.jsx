@@ -1,22 +1,45 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Account from "./components/Account"
 import Books from "./components/Books"
 import Login from "./components/Login"
 import Navigations from "./components/Navigations"
 import Register from "./components/Register"
 import SingleBook from "./components/SingleBook"
+import { Route, Routes } from "react-router-dom"
+import axios from 'axios'
+
 
 function App() {
 	const [token, setToken] = useState(null)
+	const [ allBooks , setAllBooks ] = useState([])
+
+	useEffect(()=>{
+		const fetchBooks = async () => {
+			try {
+				const data = await axios.get("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books")
+				console.log(data)
+			} catch (error) {
+				console.error(error)
+			}
+		}
+		fetchBooks()
+	})
 
 	return (
 		<div>
-			{/* <Account/> */}
-			<Books/>
-			{/* <Login/> */}
-			{/* <Navigations/> */}
-			{/* <Register/> */}
-			{/* <SingleBook/>			 */}
+
+			<div>
+				{/* <Account/> */}
+				{/* <Books /> */}
+				{/* <Login/> */}
+				{/* <Navigations/> */}
+				{/* <Register/> */}
+				{/* <SingleBook/> */}
+			</div>
+
+			<Routes>
+				<Route path="/" element={<Books />} />
+			</Routes>
 		</div>
 	)
 }
