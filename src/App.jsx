@@ -7,12 +7,14 @@ import Register from "./components/Register"
 import SingleBook from "./components/SingleBook"
 import { Route, Routes } from "react-router-dom"
 import axios from 'axios'
+import Search from "./components/Search"
 
 
 function App() {
 	const [token, setToken] = useState(null)
 	const [ allBooks , setAllBooks ] = useState([])
 
+	// Retrieve Books
 	useEffect(()=>{
 		const fetchBooks = async () => {
 			try {
@@ -26,22 +28,22 @@ function App() {
 		fetchBooks()
 	}, [])
 
+
+	// Displayed Items	
 	return (
 		<div>
-
-			<div>
+			<h1>The Library App</h1>
 				{/* <Account/> */}
 				{/* <Books /> */}
 				{/* <Login/> */}
 				{/* <Navigations/> */}
 				{/* <Register/> */}
 				{/* <SingleBook/> */}
-			</div>
-
 			<Routes>
 				<Route path="/" element={<Books allBooks={allBooks}/>} />
 				<Route path="/books" element={<Books allBooks={allBooks}/>} />
-				<Route path="/books/:id" element={<SingleBook allBooks={allBooks}/>} />
+				<Route path="/books/:id" element={<SingleBook allBooks={allBooks} setAllBooks={setAllBooks} />} />
+				<Route path="/books/search/?" element={<Search/>} />
 			</Routes>
 		</div>
 	)

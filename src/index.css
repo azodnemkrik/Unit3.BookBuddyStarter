@@ -1,65 +1,117 @@
 body {
-  font-family: Georgia, serif;
-  background-color: #f8f8f8;
-  margin: 0;
-  padding: 0;
+	font-family: Georgia, serif;
+	background-color: #f8f8f8;
+	margin: 0;
+	padding: 0;
 }
 
 #logo-image {
-  width: 30px;
-  margin-right: 10px;
+	width: 30px;
+	margin-right: 10px;
 }
 
 /* Add your own custom styles here */
 
+a {
+	text-decoration: none;
+}
+
+
 .booksContainer {
-  display: flex;
-  flex-wrap: wrap;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
 .book {
-  display: flex;
-  flex-direction: column;
-  border:1px solid black;
-  justify-content: start;
-  align-items: center;
-  text-align: center;
-  line-height: 1rem;
-  width: 20rem;
-  padding: 1rem;
-  margin: 1rem;
+	display: flex;
+	flex-direction: column;
+	border: 3px solid rgb(147, 162, 206);
+	background-color: antiquewhite;
+	border-radius: 10px;
+	justify-content: start;
+	align-items: center;
+	gap: 1rem;
+	text-align: center;
+	line-height: 1rem;
+	width: 20rem;
+	padding: 1rem;
+	margin: 1rem;
+	box-shadow: 8px 8px 2px 1px rgba(147, 162, 206, 0.2);
 }
 
-.book > img {
-    width: 250px;
-    /* height: 325px; */
+.bookImage {
+	width: 250px;
+	/* height: 325px; */
 }
 
-.book > .description {
-  text-wrap: wrap;
-  /* width: 200px; */
+.singleBookContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 2vh;
 }
+
+.singleBookLayout {
+	display: flex;
+	justify-content: start;
+	gap: 3rem;
+	align-items: center;
+	border: 3px solid rgb(147, 162, 206);
+	background-color: antiquewhite;
+	border-radius: 10px;
+	width: 70vw;
+	min-width: 800px;
+	max-width: 1100px;
+	justify-self: center;
+	box-shadow: 8px 8px 2px 1px rgba(147, 162, 206, 0.2);
+}
+
+.singleBookLeft {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* height: 400px; */
+	margin: 0;
+	padding: 1rem;
+}
+
+.singleBookRight {
+	width: 50%;
+}
+
+.isAvailable {
+	color: rgb(0, 95, 0);
+	font-style: italic;
+}
+
+.notAvailable {
+	color: rgb(157, 32, 32);
+	font-style: italic;
+}
+
 
 .accountComponent {
-  background-color: red;
+	background-color: red;
 }
 
 .booksComponent {
-  background-color: orange;
+	background-color: orange;
 }
 
 .loginComponent {
-  background-color: yellow;
+	background-color: yellow;
 }
 
 .navigationsComponent {
-  background-color: green;
+	background-color: green;
 }
 
 .registerComponent {
-  background-color: blue;
+	background-color: blue;
 }
 
 .singleBookComponent {
-  background-color: indigo;
+	background-color: indigo;
 }
