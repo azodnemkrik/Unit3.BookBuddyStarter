@@ -40,10 +40,10 @@ function App() {
 				{/* <Register/> */}
 				{/* <SingleBook/> */}
 			<Routes>
-				<Route path="/" element={<Books allBooks={allBooks}/>} />
-				<Route path="/books" element={<Books allBooks={allBooks}/>} />
+				<Route path="/" element={<Books allBooks={allBooks} />} />
+				<Route path="/books" element={<Books allBooks={allBooks} />} />
 				<Route path="/books/:id" element={<SingleBook allBooks={allBooks} setAllBooks={setAllBooks} />} />
-				<Route path="/books/search/?" element={<Search/>} />
+				<Route path="/books/search/?" element={<Search allBooks={allBooks} />} />
 			</Routes>
 		</div>
 	)

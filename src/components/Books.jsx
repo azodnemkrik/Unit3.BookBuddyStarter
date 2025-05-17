@@ -16,7 +16,7 @@ const Books = ({ allBooks }) => {
 
 	return (
 		<div>
-			<h3>Search the Library:</h3>
+			<h3>Search for book title:</h3>
 			<form action={searchForBooks}>
 				<input type="text" name="searchBar" />
 				<button>Search</button>

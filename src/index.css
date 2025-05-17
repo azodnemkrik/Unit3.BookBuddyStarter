@@ -16,7 +16,7 @@ a {
 	text-decoration: none;
 }
 
-
+/* ALL BOOKS */
 .booksContainer {
 	display: flex;
 	flex-wrap: wrap;
@@ -45,6 +45,7 @@ a {
 	/* height: 325px; */
 }
 
+/* SINGLE BOOK */
 .singleBookContainer {
 	display: flex;
 	flex-direction: column;
@@ -91,7 +92,13 @@ a {
 	font-style: italic;
 }
 
+/* SEARCH */
+.nameSearch {
+	color: rgb(0, 95, 0);
+}
 
+
+/* TEMPORARY STYLES */
 .accountComponent {
 	background-color: red;
 }
