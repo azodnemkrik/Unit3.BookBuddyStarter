@@ -33,12 +33,19 @@ function App() {
 	return (
 		<div>
 			<h1>The Library App</h1>
-				{/* <Account/> */}
-				{/* <Books /> */}
-				{/* <Login/> */}
-				{/* <Navigations/> */}
-				{/* <Register/> */}
-				{/* <SingleBook/> */}
+					<div>
+						<Login/>
+						{ 
+
+							// user.id ? <Welcome user={user} setUser={setUser} /> :
+							// 	<div>
+							// 		<h1>Please log in!</h1>
+							// 		<LoginForm authenticate={authenticate} />
+							// 		<Link to="/signup"><h3>Or Sign up!</h3></Link>
+							// 	</div>
+						}
+						<hr />
+					</div>
 			<Routes>
 				<Route path="/" element={<Books allBooks={allBooks} />} />
 				<Route path="/books" element={<Books allBooks={allBooks} />} />

@@ -1,8 +1,16 @@
 const Login = () => {
 	return (
-		<div className="loginComponent">
-			<h1>Login Component</h1>
-			<hr />
+		<div>
+			<h3>Login to access your account</h3>
+			<form>
+				<label>
+					Username: <input type="text" name="username" />
+				</label><br/>
+				<label>
+					Password: <input type="text" name="password" />
+				</label><br/>
+				<button>Login</button>
+			</form>
 		</div>
 	)
 }
