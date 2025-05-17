@@ -1,6 +1,9 @@
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 const Login = () => {
+
+	const navigate = useNavigate()
 
 	const login = async (formData) => {
 		const email = formData.get("email")
@@ -10,8 +13,8 @@ const Login = () => {
 			password
 		}
 		try {
-			const data = await axios.post("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/login")
-			console.log("data:", data)
+			const {data} = await axios.post("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/login", user)
+			console.log("token:", data)
 		} catch (error) {
 			console.error("error:", error)
 		}
@@ -31,10 +34,10 @@ const Login = () => {
 					<button>Login</button>
 				</div>
 			</form>
-			<h4>- or -</h4>
+			<h4> or </h4>
 			<div className="loginBox createAccountPrompt">
 				<h3>Create an account.</h3>
-				<button>Sign Up Now</button>
+				<button onClick={()=>navigate("/register")}>Register Now</button>
 			</div>
 		</div>
 	)

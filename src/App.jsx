@@ -5,7 +5,7 @@ import Login from "./components/Login"
 import Navigations from "./components/Navigations"
 import Register from "./components/Register"
 import SingleBook from "./components/SingleBook"
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom"
 import axios from 'axios'
 import Search from "./components/Search"
 
@@ -13,6 +13,9 @@ import Search from "./components/Search"
 function App() {
 	const [token, setToken] = useState(null)
 	const [ allBooks , setAllBooks ] = useState([])
+	const navigate = useNavigate()
+	const location = useLocation()
+
 
 	// Retrieve Books
 	useEffect(()=>{
@@ -33,6 +36,10 @@ function App() {
 	return (
 		<div>
 			<h1>The Library App</h1>
+			{
+				location.pathname === "/register" ? (
+					null
+				) : (
 					<div>
 						<Login/>
 						{ 
@@ -46,11 +53,15 @@ function App() {
 						}
 						<hr />
 					</div>
+				)
+			}
+
 			<Routes>
 				<Route path="/" element={<Books allBooks={allBooks} />} />
 				<Route path="/books" element={<Books allBooks={allBooks} />} />
 				<Route path="/books/:id" element={<SingleBook allBooks={allBooks} setAllBooks={setAllBooks} />} />
 				<Route path="/books/search/?" element={<Search allBooks={allBooks} />} />
+				<Route path="/register" element={<Register/>} />
 			</Routes>
 		</div>
 	)

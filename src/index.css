@@ -103,15 +103,19 @@ a {
 .loginContainer{
 	display: flex;
 	justify-content: start;
+	flex-wrap: nowrap;
 	align-items: center;
 	gap: 1rem;
+	margin-bottom: 2rem;
+	height: 20vh;
 }
 
 .loginBox {
 	border: 2px solid #999999;
 	border-radius: 20px;
-	width: 20vw;
-	height: 10vh;
+	width: 300px;
+	min-width: 300px;
+	height: 140px;
 	padding: 1vh;
 }
 
