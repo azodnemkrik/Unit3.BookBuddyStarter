@@ -83,7 +83,7 @@ a {
 }
 
 .isAvailable {
-	color: rgb(0, 95, 0);
+	color: #005f00;
 	font-style: italic;
 }
 
@@ -94,7 +94,38 @@ a {
 
 /* SEARCH */
 .nameSearch {
-	color: rgb(0, 95, 0);
+	color: #005f00;
+}
+
+
+
+/* LOGIN FORMS */
+.loginContainer{
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	gap: 1rem;
+}
+
+.loginBox {
+	border: 2px solid #999999;
+	border-radius: 20px;
+	width: 20vw;
+	height: 10vh;
+	padding: 1vh;
+}
+
+.loginPrompt {
+	border: 3px solid rgb(147, 162, 206);
+	background-color: antiquewhite;
+	box-shadow: 8px 8px 2px 1px rgba(147, 162, 206, 0.2);
+}
+
+.createAccountPrompt {
+	color: #005f00;
+	border: 3px solid #149240;
+	background-color: #74b362;
+	box-shadow: 8px 8px 2px 1px #169c1433;
 }
 
 
