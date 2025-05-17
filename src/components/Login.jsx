@@ -9,20 +9,21 @@ const Login = () => {
 		const email = formData.get("email")
 		const password = formData.get("password")
 		const user = {
-			username,
+			email,
 			password
 		}
 		try {
 			const {data} = await axios.post("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/login", user)
 			console.log("token:", data)
+			// window.localStorage.setItem("token", data)
 		} catch (error) {
-			console.error("error:", error)
+			console.error("error:", error.response.data)
 		}
 	}
 
 	return (
 		<div className="loginContainer">
-			<form>
+			<form action={login}>
 				<div className="loginBox loginPrompt">
 				<h3>Login to access your account.</h3>
 					<label>

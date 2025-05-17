@@ -162,6 +162,8 @@ a {
 
 .registerForm > label > input {
 	width: 98%;
+	height: 2rem;
+	font-size: 1rem;
 }
 
 .registerForm > button {

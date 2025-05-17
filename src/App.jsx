@@ -32,6 +32,12 @@ function App() {
 	}, [])
 
 
+	// Authentication
+	const authenticate = () => {
+		
+	}
+
+
 	// Displayed Items	
 	return (
 		<div>
