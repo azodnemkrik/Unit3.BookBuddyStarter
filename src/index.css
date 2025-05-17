@@ -125,11 +125,51 @@ a {
 	box-shadow: 8px 8px 2px 1px rgba(147, 162, 206, 0.2);
 }
 
-.createAccountPrompt {
+.createAccountStyle {
+	align-self: center;
 	color: #005f00;
 	border: 3px solid #149240;
 	background-color: #74b362;
 	box-shadow: 8px 8px 2px 1px #169c1433;
+}
+
+/* REGISTER */
+.registerContainer{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-self: center;
+	gap: 10px;
+}
+
+.registerForm {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	gap: 10px;
+	border: 2px solid #999999;
+	border-radius: 20px;
+	width: 300px;
+	min-width: 300px;
+	/* height: 140px; */
+	padding: 2vh;
+	color: #005f00;
+	border: 3px solid #149240;
+	background-color: #74b362;
+	/* box-shadow: 8px 8px 2px 1px #169c1433; */
+}
+
+.registerForm > label > input {
+	width: 98%;
+}
+
+.registerForm > button {
+	margin-top: 20px;
+	align-self: center;
+	width: 50%;
+	height: 30px;
+
 }
 
 

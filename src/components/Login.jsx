@@ -35,7 +35,7 @@ const Login = () => {
 				</div>
 			</form>
 			<h4> or </h4>
-			<div className="loginBox createAccountPrompt">
+			<div className="loginBox createAccountStyle">
 				<h3>Create an account.</h3>
 				<button onClick={()=>navigate("/register")}>Register Now</button>
 			</div>
