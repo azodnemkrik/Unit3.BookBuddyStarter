@@ -100,7 +100,7 @@ a {
 
 
 /* LOGIN FORMS */
-.loginContainer{
+.loginContainer {
 	display: flex;
 	justify-content: start;
 	flex-wrap: nowrap;
@@ -126,15 +126,24 @@ a {
 }
 
 .createAccountStyle {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
 	align-self: center;
+	justify-content: center;
 	color: #005f00;
 	border: 3px solid #149240;
 	background-color: #74b362;
 	box-shadow: 8px 8px 2px 1px #169c1433;
 }
 
+.createAccountStyle > button {
+	width: 100px;
+	align-self: center;
+}
+
 /* REGISTER */
-.registerContainer{
+.registerContainer {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
@@ -160,13 +169,13 @@ a {
 	/* box-shadow: 8px 8px 2px 1px #169c1433; */
 }
 
-.registerForm > label > input {
+.registerForm>label>input {
 	width: 98%;
 	height: 2rem;
 	font-size: 1rem;
 }
 
-.registerForm > button {
+.registerForm>button {
 	margin-top: 20px;
 	align-self: center;
 	width: 50%;

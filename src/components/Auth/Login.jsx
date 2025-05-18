@@ -6,8 +6,8 @@ const Login = ({ authenticate }) => {
 	const navigate = useNavigate()
 
 	const login = async (formData) => {
-		const email = formData.get("email")
-		const password = formData.get("password")
+		const email = formData.get("email").toString()
+		const password = formData.get("password").toString()
 		const user = {
 			email,
 			password,

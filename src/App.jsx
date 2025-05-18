@@ -42,13 +42,13 @@ function App() {
 			if(!token) {
 				throw Error("No token found!")				
 			}
-			const response = await axios.get("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/login" , {
+			const response = await axios.get("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/me" , {
 				headers: {
-					"Authorization" : `Bearer ${token}`
+					Authorization : `Bearer ${token}`
 				}
 			})
-			console.log("Authenticate response:", response)
-			// setUser(response)
+			console.log("Authenticate response:", response.data)
+			setUser(response)
 
 		} catch (error) {
 			console.error(error)
