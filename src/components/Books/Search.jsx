@@ -25,7 +25,7 @@ const Search = ({ allBooks , searchResults , setSearchResults}) => {
 
     return (
         <div>
-            <h3>Search Results for "<span className="nameSearch">{nameSearch}</span>":</h3>
+            <h3>Found <span className="nameSearch">{searchResults.length}</span> search results for "<span className="nameSearch">{nameSearch}</span>":</h3>
             <button onClick={() => { clearSearch() }}>Clear Search Results</button>
             <div className="booksContainer">
                 {

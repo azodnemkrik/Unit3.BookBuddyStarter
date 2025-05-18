@@ -12,9 +12,41 @@ body {
 
 /* Add your own custom styles here */
 
+/* NAVBAR */
 a {
 	text-decoration: none;
 }
+
+nav {
+	display: flex;
+	justify-content: space-around;
+	background-color: #005f00;
+	padding: .25rem;
+	width: 100%;
+	cursor: pointer;
+	font-weight: 600;
+	font-size: 1.25rem;
+}
+
+nav a {
+	color: #ffffff;
+	padding: 1rem;
+	transition-duration: .15s;
+}
+
+nav a:hover {
+	color: #ff5900;
+}
+
+.selected {
+	color: #ff5900;
+	border-bottom: 1px solid white;
+}
+
+.requiresLogin {
+	color: #999999;
+}
+
 
 /* ALL BOOKS */
 .booksContainer {
@@ -26,7 +58,7 @@ a {
 .book {
 	display: flex;
 	flex-direction: column;
-	border: 3px solid rgb(147, 162, 206);
+	border: 3px solid #93a2ce;
 	background-color: antiquewhite;
 	border-radius: 10px;
 	justify-content: start;
@@ -88,7 +120,7 @@ a {
 }
 
 .notAvailable {
-	color: rgb(157, 32, 32);
+	color: #9d2020;
 	font-style: italic;
 }
 

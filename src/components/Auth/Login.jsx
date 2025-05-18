@@ -6,8 +6,8 @@ const Login = ({ authenticate }) => {
 	const navigate = useNavigate()
 
 	const login = async (formData) => {
-		const email = formData.get("email").toString()
-		const password = formData.get("password").toString()
+		const email = formData.get("email")
+		const password = formData.get("password")
 		const user = {
 			email,
 			password,
@@ -18,7 +18,12 @@ const Login = ({ authenticate }) => {
 			window.localStorage.setItem("token", data.data.token)
 			authenticate(window.localStorage.getItem("token"))
 		} catch (error) {
-			console.log(error)
+			console.log(error.status)
+			if(error.status == 401) {
+				alert("Your login combination was not found in our database.\nPlease re-check your credentials or create a new account.")
+			} else if (error.status == 400){
+				alert("Please login using a registered email address and password combination.")
+			}
 		}
 	}
 
