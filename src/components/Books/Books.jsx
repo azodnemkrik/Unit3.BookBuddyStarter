@@ -6,20 +6,18 @@ const Books = ({ allBooks, user }) => {
 	const searchForBooks = (formData) => {
 		const target = formData.get("searchBar").toLowerCase()
 		if (target !== "") {
-			console.log("target:", target)
+			// console.log("target:", target)
 			navigate(`/books/search/?book=${target}`)
 		}
 	}
 
-	const checkOutBook = () => {
+	const makeReservation = () => {
 		console.log("Check it out!")
 	}
 
 	return (
 		<div>
-			<h3>Search for a book title:</h3>{
-				console.log("user", user)
-			}
+			<h3>Search for a book title:</h3>
 			<form action={searchForBooks}>
 				<input type="text" name="searchBar" defaultValue="" />
 				<button>Search</button>
@@ -37,14 +35,13 @@ const Books = ({ allBooks, user }) => {
 									</div>
 								</Link>
 								{book.available ? (
-									// <span className="isAvailable">Available</span>
-									// <button onClick={() => checkOutBook()}>Checkout Book</button>
 									<span className="isAvailable">Available</span>
 								) : (
 									<span className="notAvailable">Currently Not Available</span>
 								)}
+								
 								{user.id ? (
-									<button>Reserve</button>
+									<button onClick={()=>makeReservation()}>Reserve</button>
 								) : (
 									<p>Login to Reserve</p>
 								)}

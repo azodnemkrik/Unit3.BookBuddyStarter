@@ -8,7 +8,7 @@ const Navigation = ({ user , pathname }) => {
 			{user.id ? (
 				<>
 					<p><Link to="/reservations" className={ pathname === "/reservations" ? "selected" : ""}>Reservations</Link></p>
-					<p><Link to="/account" className={ pathname === "/account" ? "selected" : ""}>Account</Link></p>
+					<p><Link to={`/account/${user.id}`} className={ pathname === "/account" ? "selected" : ""}>Account</Link></p>
 				</>
 				) : (
 				<>

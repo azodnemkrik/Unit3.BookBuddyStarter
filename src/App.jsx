@@ -52,7 +52,7 @@ function App() {
 					"Authorization": `Bearer ${token}`
 				}
 			})
-			console.log("Authenticate response:", response.data)
+			// console.log("Authenticate response:", response.data)
 			setUser(response.data)
 		} catch (error) {
 			console.error(error)
@@ -67,22 +67,22 @@ function App() {
 	}, [user.id])
 
 	// Reservations
-	// useEffect(() => {
-	// 	const fetchReservations = async (token) => {
-	// 		try {
-	// 			const { data } = await axios.get("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/reservations", {
-	// 				headers: {
-	// 					"Authorization": `Bearer ${token}`
-	// 				}
-	// 			})
-	// 			console.log("reservations:", data)
-	// 			setReservations(data)
-	// 		} catch (error) {
-	// 			console.error(error)
-	// 		}
-	// 	}
-	// 	fetchReservations(window.localStorage.getItem("token"))
-	// }, [user.id])
+	useEffect(() => {
+		const fetchReservations = async (token) => {
+			try {
+				const { data } = await axios.get("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/reservations", {
+					headers: {
+						"Authorization": `Bearer ${token}`
+					}
+				})
+				console.log("reservations:", data)
+				setReservations(data)
+			} catch (error) {
+				console.error(error)
+			}
+		}
+		fetchReservations(window.localStorage.getItem("token"))
+	}, [user.id])
 
 	// Displayed Items	
 	return (
@@ -112,12 +112,12 @@ function App() {
 
 			<Routes>
 				<Route path="/" element={<Home allBooks={allBooks} user={user}/>} />
-				<Route path="/books" element={<Books allBooks={allBooks} user={user}/>} />
+				<Route path="/books" element={<Books allBooks={allBooks} user={user} />} />
 				<Route path="/books/:id" element={<SingleBook allBooks={allBooks} setAllBooks={setAllBooks} searchResults={searchResults} />} />
 				<Route path="/books/search/?" element={<Search allBooks={allBooks} searchResults={searchResults} setSearchResults={setSearchResults} />} />
 				<Route path="/register" element={<Register />} />
-				<Route path="/reservations" element={<Reservations />} />
-				<Route path="/account" element={<Account user={user}/>} />
+				<Route path="/reservations" element={<Reservations user={user} reservations={reservations} />} />
+				<Route path="/account/:id" element={<Account user={user} />} />
 			</Routes>
 		</div>
 	)
