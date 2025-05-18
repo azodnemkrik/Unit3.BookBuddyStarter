@@ -36,8 +36,8 @@ function App() {
 
 	// Authentication
 	const authenticate = async (token) => {
-		console.log("\nApp.jsx - 'authenticate' function received the token:", token)
-		console.log("\n")
+		// console.log("\nApp.jsx - 'authenticate' function received the token:", token)
+		// console.log("\n")
 		try {
 			if(!token) {
 				throw Error("No token found!")				
@@ -48,7 +48,8 @@ function App() {
 				}
 			})
 			console.log("Authenticate response:", response.data)
-			setUser(response)
+			setUser(response.data)
+			console.log("user:", user)
 
 		} catch (error) {
 			console.error(error)
@@ -56,7 +57,7 @@ function App() {
 
 	}
 	
-	useEffect(()=>{
+	useEffect(() => {
 		const loggedInToken = window.localStorage.getItem("token")
 		if(loggedInToken) {
 			authenticate(loggedInToken)
