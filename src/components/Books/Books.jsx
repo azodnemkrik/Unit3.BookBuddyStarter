@@ -1,12 +1,11 @@
 import { Link, useNavigate } from "react-router-dom"
 
-const Books = ({ allBooks }) => {
-
+const Books = ({ allBooks, user }) => {
 	const navigate = useNavigate()
 
 	const searchForBooks = (formData) => {
 		const target = formData.get("searchBar").toLowerCase()
-		if(target !== ""){
+		if (target !== "") {
 			console.log("target:", target)
 			navigate(`/books/search/?book=${target}`)
 		}
@@ -18,9 +17,11 @@ const Books = ({ allBooks }) => {
 
 	return (
 		<div>
-			<h3>Search for a book title:</h3>
+			<h3>Search for a book title:</h3>{
+				console.log("user", user)
+			}
 			<form action={searchForBooks}>
-				<input type="text" name="searchBar"  defaultValue=""/>
+				<input type="text" name="searchBar" defaultValue="" />
 				<button>Search</button>
 			</form>
 			<div className="booksContainer">
@@ -32,21 +33,23 @@ const Books = ({ allBooks }) => {
 									<div>
 										<h3>{book.title}</h3>
 										<p>By: {book.author}</p>
-										<img className="bookImage" src={book.coverimage}/>
+										<img className="bookImage" src={book.coverimage} />
 									</div>
 								</Link>
-								{
-									book.available ? (
-										// <span className="isAvailable">Available</span>
-										// <button onClick={() => checkOutBook()}>Checkout Book</button>
-										<span className="isAvailable">Available</span>
-									) : (
-										<span className="notAvailable">Currently Not Available</span>
-									)
-								}
-
+								{book.available ? (
+									// <span className="isAvailable">Available</span>
+									// <button onClick={() => checkOutBook()}>Checkout Book</button>
+									<span className="isAvailable">Available</span>
+								) : (
+									<span className="notAvailable">Currently Not Available</span>
+								)}
+								{user.id ? (
+									<button>Reserve</button>
+								) : (
+									<p>Login to Reserve</p>
+								)}
 							</div>
-						)	
+						)
 					})
 				}
 			</div>

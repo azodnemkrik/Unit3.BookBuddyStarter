@@ -22,6 +22,7 @@ nav {
 	justify-content: space-around;
 	background-color: #005f00;
 	padding: .25rem;
+	margin-bottom: 2rem;
 	width: 100%;
 	cursor: pointer;
 	font-weight: 600;
@@ -35,12 +36,13 @@ nav a {
 }
 
 nav a:hover {
-	color: #ff5900;
+	color: #74b362;
 }
 
 .selected {
-	color: #ff5900;
-	border-bottom: 1px solid white;
+	color: #74b362;
+	text-decoration: underline #74b362;
+	/* border-bottom: 1px solid white; */
 }
 
 .requiresLogin {
@@ -91,8 +93,8 @@ nav a:hover {
 	justify-content: start;
 	gap: 3rem;
 	align-items: center;
-	border: 3px solid rgb(147, 162, 206);
-	background-color: antiquewhite;
+	border: 3px solid #93a2ce;
+	background-color: #faebd7;
 	border-radius: 10px;
 	width: 70vw;
 	min-width: 800px;
@@ -152,8 +154,8 @@ nav a:hover {
 }
 
 .loginPrompt {
-	border: 3px solid rgb(147, 162, 206);
-	background-color: antiquewhite;
+	border: 3px solid #93a2ce;
+	background-color: #faebd7;
 	box-shadow: 8px 8px 2px 1px rgba(147, 162, 206, 0.2);
 }
 

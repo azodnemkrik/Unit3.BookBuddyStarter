@@ -9,6 +9,7 @@ import axios from 'axios'
 import Search from "./components/Books/Search"
 import Welcome from "./components/Auth/Welcome"
 import Navigation from "./components/Books/Navigation"
+import Reservations from "./components/Books/Reservations"
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
 
 	const navigate = useNavigate()
 	const location = useLocation()
+	const {pathname} = location
 
 
 	// Retrieve Books
@@ -47,17 +49,14 @@ function App() {
 			}
 			const response = await axios.get("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/me", {
 				headers: {
-					"Authorization" : `Bearer ${token}`
+					"Authorization": `Bearer ${token}`
 				}
 			})
+			console.log("Authenticate response:", response.data)
 			setUser(response.data)
-			// console.log("Authenticate response:", response.data)
-			// console.log("user:", user)
-
 		} catch (error) {
 			console.error(error)
 		}
-
 	}
 
 	useEffect(() => {
@@ -68,39 +67,39 @@ function App() {
 	}, [user.id])
 
 	// Reservations
-	useEffect(() => {
-		const fetchReservations = async (token) => {
-			try {
-				const { data } = await axios.get("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/reservations" , {
-					headers: {
-						"Authorization" : `Bearer ${token}`
-					}
-				})
-				console.log("reservations:", data)
-				setReservations(data)
-			} catch (error) {
-				console.error(error)
-			}
-		}
-		fetchReservations(window.localStorage.getItem("token"))
-	}, [user.id])
+	// useEffect(() => {
+	// 	const fetchReservations = async (token) => {
+	// 		try {
+	// 			const { data } = await axios.get("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/reservations", {
+	// 				headers: {
+	// 					"Authorization": `Bearer ${token}`
+	// 				}
+	// 			})
+	// 			console.log("reservations:", data)
+	// 			setReservations(data)
+	// 		} catch (error) {
+	// 			console.error(error)
+	// 		}
+	// 	}
+	// 	fetchReservations(window.localStorage.getItem("token"))
+	// }, [user.id])
 
 	// Displayed Items	
 	return (
 		<div>
 			<h1>The Library App</h1>
-			<Navigation user={user}/>
+			<Navigation user={user} pathname={pathname}/>
 			{
 				location.pathname === "/register" ? (
 					null
 				) : (
 					<div>
 						{
-							user.id ?
+							user.id ? (
 								<Welcome user={user} setUser={setUser} />
-								: (
-									<Login authenticate={authenticate} />
-								)
+							) : (
+								<Login authenticate={authenticate} />
+							)
 						}
 						<hr />
 					</div>
@@ -108,13 +107,13 @@ function App() {
 			}
 
 			<Routes>
-				<Route path="/" element={<Books allBooks={allBooks} />} />
-				<Route path="/books" element={<Books allBooks={allBooks} />} />
+				<Route path="/" element={<Books allBooks={allBooks}  user={user} />} />
+				<Route path="/books" element={<Books allBooks={allBooks} user={user}/>} />
 				<Route path="/books/:id" element={<SingleBook allBooks={allBooks} setAllBooks={setAllBooks} searchResults={searchResults} />} />
 				<Route path="/books/search/?" element={<Search allBooks={allBooks} searchResults={searchResults} setSearchResults={setSearchResults} />} />
 				<Route path="/register" element={<Register />} />
-				<Route path="/reservations" element={<Register />} />
-				<Route path="/account" element={<Account />} />
+				<Route path="/reservations" element={<Reservations />} />
+				<Route path="/account" element={<Account user={user}/>} />
 			</Routes>
 		</div>
 	)
