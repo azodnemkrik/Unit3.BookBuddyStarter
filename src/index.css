@@ -1,6 +1,6 @@
 body {
 	font-family: Georgia, serif;
-	background-color: #f8f8f8;
+	background-color: #FFFFFF;
 	margin: 0;
 	padding: .5vw 2vw;
 }
@@ -47,6 +47,18 @@ nav a:hover {
 
 .requiresLogin {
 	color: #999999;
+}
+
+/* HOME */
+.homeContainer {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	text-align: center;
+}
+.registerNowLink {
+	text-decoration: underline;
+	color:#005f00;
 }
 
 
@@ -215,6 +227,13 @@ nav a:hover {
 	width: 50%;
 	height: 30px;
 
+}
+
+
+/* ACCOUNT */
+.userData {
+	color: #149240;
+	font-weight: 600;
 }
 
 

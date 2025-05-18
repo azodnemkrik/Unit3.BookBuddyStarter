@@ -10,7 +10,7 @@ import Search from "./components/Books/Search"
 import Welcome from "./components/Auth/Welcome"
 import Navigation from "./components/Books/Navigation"
 import Reservations from "./components/Books/Reservations"
-
+import Home from "./components/Auth/Home"
 
 function App() {
 	const [allBooks, setAllBooks] = useState([])
@@ -87,7 +87,7 @@ function App() {
 	// Displayed Items	
 	return (
 		<div>
-			<h1>The Library App</h1>
+			<h1>Book Buddy - The Library App</h1>
 			<Navigation user={user} pathname={pathname}/>
 			{
 				location.pathname === "/register" ? (
@@ -95,10 +95,14 @@ function App() {
 				) : (
 					<div>
 						{
-							user.id ? (
-								<Welcome user={user} setUser={setUser} />
+							location.pathname === "/" ? (
+								null
 							) : (
-								<Login authenticate={authenticate} />
+								user.id ? (
+									<Welcome user={user} setUser={setUser} />
+								) : (
+									<Login authenticate={authenticate} />
+								)
 							)
 						}
 						<hr />
@@ -107,7 +111,7 @@ function App() {
 			}
 
 			<Routes>
-				<Route path="/" element={<Books allBooks={allBooks}  user={user} />} />
+				<Route path="/" element={<Home allBooks={allBooks} user={user}/>} />
 				<Route path="/books" element={<Books allBooks={allBooks} user={user}/>} />
 				<Route path="/books/:id" element={<SingleBook allBooks={allBooks} setAllBooks={setAllBooks} searchResults={searchResults} />} />
 				<Route path="/books/search/?" element={<Search allBooks={allBooks} searchResults={searchResults} setSearchResults={setSearchResults} />} />
