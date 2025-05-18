@@ -1,1 +1,1 @@
-![thumbnail](https://github.com/user-attachments/assets/5a7b8343-8e18-40e5-89d5-c2e41e1034e5)
+![BookBuddy-thumbnail](https://github.com/user-attachments/assets/1191a443-893c-4035-ac68-98d7767c3fbd)
