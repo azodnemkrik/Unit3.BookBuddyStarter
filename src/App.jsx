@@ -1,28 +1,30 @@
 import { useEffect, useState } from "react"
-import Account from "./components/Account"
-import Books from "./components/Books"
-import Login from "./components/Login"
-import Navigations from "./components/Navigations"
-import Register from "./components/Register"
-import SingleBook from "./components/SingleBook"
+import Account from "./components/Auth/Account"
+import Books from "./components/Books/Books"
+import Login from "./components/Auth/Login"
+import Register from "./components/Auth/Register"
+import SingleBook from "./components/Books/SingleBook"
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom"
 import axios from 'axios'
-import Search from "./components/Search"
+import Search from "./components/Books/Search"
+import Welcome from "./components/Auth/Welcome"
 
 
 function App() {
-	const [token, setToken] = useState(null)
-	const [ allBooks , setAllBooks ] = useState([])
+	const [allBooks, setAllBooks] = useState([])
+	const [searchResults, setSearchResults] = useState([])
+	const [user, setUser] = useState({})
+
 	const navigate = useNavigate()
 	const location = useLocation()
 
 
 	// Retrieve Books
-	useEffect(()=>{
+	useEffect(() => {
 		const fetchBooks = async () => {
 			try {
 				const { data } = await axios.get("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books")
-				console.log(data)
+				// console.log(data)
 				setAllBooks(data)
 			} catch (error) {
 				console.error(error)
@@ -33,9 +35,33 @@ function App() {
 
 
 	// Authentication
-	const authenticate = () => {
-		
+	const authenticate = async (token) => {
+		console.log("\nApp.jsx - 'authenticate' function received the token:", token)
+		console.log("\n")
+		try {
+			if(!token) {
+				throw Error("No token found!")				
+			}
+			const response = await axios.get("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/login" , {
+				headers: {
+					"Authorization" : `Bearer ${token}`
+				}
+			})
+			console.log("Authenticate response:", response)
+			// setUser(response)
+
+		} catch (error) {
+			console.error(error)
+		}
+
 	}
+	
+	useEffect(()=>{
+		const loggedInToken = window.localStorage.getItem("token")
+		if(loggedInToken) {
+			authenticate(loggedInToken)
+		}
+	}, [user.id])
 
 
 	// Displayed Items	
@@ -47,7 +73,13 @@ function App() {
 					null
 				) : (
 					<div>
-						<Login/>
+						{
+							user.id ? 
+								<Welcome user={user} setUser={setUser} />
+							 : (
+								<Login authenticate={authenticate}/>
+							)
+						}
 						<hr />
 					</div>
 				)
@@ -56,21 +88,12 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Books allBooks={allBooks} />} />
 				<Route path="/books" element={<Books allBooks={allBooks} />} />
-				<Route path="/books/:id" element={<SingleBook allBooks={allBooks} setAllBooks={setAllBooks} />} />
-				<Route path="/books/search/?" element={<Search allBooks={allBooks} />} />
-				<Route path="/register" element={<Register/>} />
+				<Route path="/books/:id" element={<SingleBook allBooks={allBooks} setAllBooks={setAllBooks} searchResults={searchResults} />} />
+				<Route path="/books/search/?" element={<Search allBooks={allBooks} searchResults={searchResults} setSearchResults={setSearchResults} />} />
+				<Route path="/register" element={<Register />} />
 			</Routes>
 		</div>
 	)
 }
 
 export default App
-
-
-/* <h1><img id='logo-image'/>Library App</h1>
-
-<p>Complete the React components needed to allow users to browse a library catalog, check out books, review their account, and return books that they've finished reading.</p>
-
-<p>You may need to use the `token` in this top-level component in other components that need to know if a user has logged in or not.</p>
-
-<p>Don't forget to set up React Router to navigate between the different views of your single page application!</p> */

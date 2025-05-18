@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 
-const Login = () => {
+const Login = ({ authenticate }) => {
 
 	const navigate = useNavigate()
 
@@ -10,14 +10,15 @@ const Login = () => {
 		const password = formData.get("password")
 		const user = {
 			email,
-			password
+			password,
 		}
 		try {
-			const {data} = await axios.post("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/login", user)
-			console.log("token:", data)
-			// window.localStorage.setItem("token", data)
+			const data = await axios.post("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/login", user)
+			console.log("\nLogin.jsx - token added to local storage, then PULLED from local storage, then sent to App.jsx:", data.data.token)
+			window.localStorage.setItem("token", data.data.token)
+			authenticate(window.localStorage.getItem("token"))
 		} catch (error) {
-			console.error("error:", error.response.data)
+			console.log(error)
 		}
 	}
 
@@ -30,7 +31,7 @@ const Login = () => {
 						Email: <input type="text" name="email" />
 					</label><br />
 					<label>
-						Password: <input type="text" name="password" />
+						Password: <input type="password" name="password" />
 					</label><br />
 					<button>Login</button>
 				</div>

@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate, useSearchParams } from "react-router-dom"
 
-const Search = ({ allBooks }) => {
+const Search = ({ allBooks , searchResults , setSearchResults}) => {
     const [searchParams, setSearchParams] = useSearchParams()
-    const [searchResults, setSearchResults] = useState([])
     const navigate = useNavigate()
 
     const nameSearch = searchParams.get("book").toLowerCase()

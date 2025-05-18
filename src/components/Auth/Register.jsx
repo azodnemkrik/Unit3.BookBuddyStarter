@@ -16,12 +16,16 @@ const Register = () => {
 			password,
 		}
 		try {
-			const {data} = await axios.post("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/register", user)
+			const {data} = await axios.post("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/register", user, {
+				headers: {
+					"Authorization" : `Bearer ${token}`
+				}
+			})
 			console.log("registering data:", data)
 			alert("Thank you for signing up!")
 			navigate("/")
 		} catch (error) {
-			console.error("error:", error.response.data)
+			console.error("error:", error)
 		}
 	}
 
