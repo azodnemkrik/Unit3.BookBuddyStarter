@@ -64,7 +64,7 @@ function App() {
 		if (loggedInToken) {
 			authenticate(loggedInToken)
 		}
-	}, [user.id])
+	}, [user.id , reservations.length])
 
 	// Reservations
 	useEffect(() => {

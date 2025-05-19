@@ -13,7 +13,7 @@ const Books = ({ allBooks, user, reservations, setReservations }) => {
 	}
 
 	const makeReservation = async (book) => {
-		console.log("Make a Reservation!", book.id)
+		console.log(`Attempting to reserve book #${book.id}`)
 		const reservation = {
 			bookId: book.id
 		}
@@ -24,10 +24,17 @@ const Books = ({ allBooks, user, reservations, setReservations }) => {
 				}
 			})
 			console.log(data)
+			setReservations([...reservations, data])
+			navigate("/reservations")
 		} catch (error) {
-
+			console.error(error)
 		}
-		// makeReservation(window.localStorage.getItem("token"))
+	}
+
+	const checkReservation = (bookid) => {
+		return reservations.find((reservation) => {
+			return reservation.bookid === bookid
+		})
 	}
 
 	return (
@@ -61,8 +68,14 @@ const Books = ({ allBooks, user, reservations, setReservations }) => {
 										}
 									</>
 								) : (
-									<span className="notAvailable">Currently Not Available</span>
-								)}
+									<>{
+										checkReservation(book.id) ? (
+										<span className="notAvailable">Currently in your <Link className="isAvailable" to="/reservations">Reservations</Link></span>
+										):(
+										<span className="notAvailable">Currently Not Available</span>
+										)
+									}</>)
+								}
 							</div>
 						)
 					})

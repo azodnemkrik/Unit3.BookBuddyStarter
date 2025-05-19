@@ -1,7 +1,8 @@
 import axios from "axios"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const Reservations = ({ user, reservations, setReservations }) => {
+	const navigate = useNavigate()
 
 	const deleteReservation = async (resID) => {
 		try {
@@ -11,6 +12,7 @@ const Reservations = ({ user, reservations, setReservations }) => {
 				}
 			})
 			setReservations(reservations.filter((reservation) => { reservation.id !== resID }))
+			navigate("/reservations")
 		} catch (error) {
 			console.error(error.message)
 		}

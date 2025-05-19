@@ -1,7 +1,7 @@
 import { all } from "axios"
 import { useNavigate, useParams } from "react-router-dom"
 
-const SingleBook = ({ allBooks, setAllBooks , user }) => {
+const SingleBook = ({ allBooks, setAllBooks, user }) => {
 	const navigate = useNavigate()
 	const params = useParams()
 	const id = params.id * 1
@@ -26,16 +26,23 @@ const SingleBook = ({ allBooks, setAllBooks , user }) => {
 						<h2>{book.title}</h2>
 						<h3>By: {book.author}</h3>
 						<p className="description">{book.description}</p>
-						<h4>Current Status: {book.available ? (<span className="isAvailable">Available</span>) : (<span className="notAvailable">Currently Not Available</span>)} </h4>
+						<h4>Current Status: {book.available ? (
+						<>
+							<span className="isAvailable">Available</span>
+							<button>Reserve</button>
+						</>) : (
+							<span className="notAvailable">Currently Not Available</span>
+						)}
+						</h4>
 					</div>
 				</div>
 				<button onClick={() => backToLibrary()}>Back to Library</button>
 				{
-					user.id ? 
+					user.id ?
 						<button onClick={() => navigate("/reservations")}>Back to your Reservations</button>
-					 : (
-						null
-					)
+						: (
+							null
+						)
 				}
 			</div>
 		)

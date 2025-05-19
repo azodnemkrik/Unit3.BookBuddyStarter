@@ -3,6 +3,7 @@ body {
 	background-color: #FFFFFF;
 	margin: 0;
 	padding: .5vw 2vw;
+	color: #333333;
 }
 
 #logo-image {
@@ -13,9 +14,17 @@ body {
 /* Add your own custom styles here */
 
 /* NAVBAR */
-a {
+a,
+a > div > h1,
+a > div > h2,
+a > div > h3,
+a > div > h4,
+a > div > h5,
+a > div > p {
 	text-decoration: none;
+	color: #333333;
 }
+
 
 nav {
 	display: flex;

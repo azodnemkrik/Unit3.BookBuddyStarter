@@ -12,8 +12,8 @@ const Navigation = ({ user , pathname }) => {
 				</>
 				) : (
 				<>
-					<p className="requiresLogin">Reservations</p>
-					<p className="requiresLogin">Account</p>
+					<p className="requiresLogin" alt="Requires Login">Reservations</p>
+					<p className="requiresLogin" alt="Requires Login">Account</p>
 				</>
 				)
 			}
