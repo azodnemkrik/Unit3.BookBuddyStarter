@@ -28,8 +28,12 @@ const SingleBook = ({ allBooks, setAllBooks, user }) => {
 						<p className="description">{book.description}</p>
 						<h4>Current Status: {book.available ? (
 						<>
-							<span className="isAvailable">Available</span>
+							<span className="isAvailable">Available</span><br/>
+							{ user.id ? (
 							<button>Reserve</button>
+							) : (
+								null
+							)}
 						</>) : (
 							<span className="notAvailable">Currently Not Available</span>
 						)}

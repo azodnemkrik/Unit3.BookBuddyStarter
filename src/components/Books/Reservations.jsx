@@ -36,8 +36,8 @@ const Reservations = ({ user, reservations, setReservations }) => {
 													<p>By: {reservation.author}</p>
 													<img className="bookImage" src={reservation.coverimage} />
 												</div>
-												<button onClick={() => { deleteReservation(reservation.id) }}>Return this book</button>
 											</Link>
+												<button onClick={() => { deleteReservation(reservation.id) }}>Return this book</button>
 										</div>
 									</div>
 								)

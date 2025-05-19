@@ -25,7 +25,7 @@ const Books = ({ allBooks, user, reservations, setReservations }) => {
 			})
 			console.log(data)
 			setReservations([...reservations, data])
-			navigate("/reservations")
+			navigate("/books")
 		} catch (error) {
 			console.error(error)
 		}
@@ -63,7 +63,7 @@ const Books = ({ allBooks, user, reservations, setReservations }) => {
 											user.id ? (
 												<button onClick={() => { makeReservation(book) }}>Reserve</button>
 											) : (
-												<p>Login to Reserve</p>
+												null
 											)
 										}
 									</>
