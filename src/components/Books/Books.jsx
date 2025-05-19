@@ -1,5 +1,7 @@
 import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
+import gsap from "gsap";
+import { useGSAP } from '@gsap/react'
 
 const Books = ({ allBooks, user, reservations, setReservations }) => {
 	const navigate = useNavigate()
@@ -38,7 +40,15 @@ const Books = ({ allBooks, user, reservations, setReservations }) => {
 		})
 		}
 	}
-
+	useGSAP(() => {
+		allBooks.length > 0 ? (
+			gsap.from(".book", {
+				duration:1 , autoAlpha: 0 , rotation:90, scale: 0 , y: 300 , ease: 'power4.inOut' , boxShadow: "0px 0px 0px 0px rgba(0, 0, 0, 0)" , stagger: .05 
+			})
+		):(
+			console.log("Loading...")
+		)
+	}, {scope:".booksContainer"})
 	return (
 		<div>
 			<h3>Search for a book title:</h3>
