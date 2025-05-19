@@ -32,9 +32,11 @@ const Books = ({ allBooks, user, reservations, setReservations }) => {
 	}
 
 	const checkReservation = (bookid) => {
+		if(user.id) {
 		return reservations.find((reservation) => {
 			return reservation.bookid === bookid
 		})
+		}
 	}
 
 	return (
