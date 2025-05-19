@@ -7,7 +7,7 @@ const Welcome = ({ user, setUser }) => {
     const logOut = () => {
         window.localStorage.removeItem("token")
         setUser({})
-        navigate("/")
+        // navigate("/")
     }
 
     return (

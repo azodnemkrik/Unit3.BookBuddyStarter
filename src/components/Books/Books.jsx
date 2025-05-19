@@ -18,9 +18,9 @@ const Books = ({ allBooks, user, reservations, setReservations }) => {
 			bookId: book.id
 		}
 		try {
-			const { data } = await axios.post("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/reservations", reservation , {
+			const { data } = await axios.post("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/reservations", reservation, {
 				headers: {
-					"Authorization" : `Bearer ${window.localStorage.getItem("token")}`
+					"Authorization": `Bearer ${window.localStorage.getItem("token")}`
 				}
 			})
 			console.log(data)
@@ -50,15 +50,18 @@ const Books = ({ allBooks, user, reservations, setReservations }) => {
 									</div>
 								</Link>
 								{book.available ? (
-									<span className="isAvailable">Available</span>
+									<>
+										<span className="isAvailable">Available</span>
+										{
+											user.id ? (
+												<button onClick={() => { makeReservation(book) }}>Reserve</button>
+											) : (
+												<p>Login to Reserve</p>
+											)
+										}
+									</>
 								) : (
 									<span className="notAvailable">Currently Not Available</span>
-								)}
-
-								{user.id ? (
-									<button onClick={() => {makeReservation(book)}}>Reserve</button>
-								) : (
-									<p>Login to Reserve</p>
 								)}
 							</div>
 						)
