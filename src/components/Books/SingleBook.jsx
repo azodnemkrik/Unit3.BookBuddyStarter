@@ -36,10 +36,10 @@ const SingleBook = ({ allBooks, setAllBooks, user }) => {
 						</h4>
 					</div>
 				</div>
-				<button onClick={() => backToLibrary()}>Back to Library</button>
+				<button onClick={() => backToLibrary()}>View all Books</button>
 				{
 					user.id ?
-						<button onClick={() => navigate("/reservations")}>Back to your Reservations</button>
+						<button onClick={() => navigate("/reservations")}>View to your Reservations</button>
 						: (
 							null
 						)
