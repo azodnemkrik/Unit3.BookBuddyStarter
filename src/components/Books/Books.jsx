@@ -1,6 +1,7 @@
+import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
 
-const Books = ({ allBooks, user }) => {
+const Books = ({ allBooks, user, reservations, setReservations }) => {
 	const navigate = useNavigate()
 
 	const searchForBooks = (formData) => {
@@ -11,8 +12,22 @@ const Books = ({ allBooks, user }) => {
 		}
 	}
 
-	const makeReservation = () => {
-		console.log("Check it out!")
+	const makeReservation = async (book) => {
+		console.log("Make a Reservation!", book.id)
+		const reservation = {
+			bookId: book.id
+		}
+		try {
+			const { data } = await axios.post("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/reservations", reservation , {
+				headers: {
+					"Authorization" : `Bearer ${window.localStorage.getItem("token")}`
+				}
+			})
+			console.log(data)
+		} catch (error) {
+
+		}
+		// makeReservation(window.localStorage.getItem("token"))
 	}
 
 	return (
@@ -39,9 +54,9 @@ const Books = ({ allBooks, user }) => {
 								) : (
 									<span className="notAvailable">Currently Not Available</span>
 								)}
-								
+
 								{user.id ? (
-									<button onClick={()=>makeReservation()}>Reserve</button>
+									<button onClick={() => {makeReservation(book)}}>Reserve</button>
 								) : (
 									<p>Login to Reserve</p>
 								)}

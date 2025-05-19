@@ -112,7 +112,7 @@ function App() {
 
 			<Routes>
 				<Route path="/" element={<Home allBooks={allBooks} user={user}/>} />
-				<Route path="/books" element={<Books allBooks={allBooks} user={user} />} />
+				<Route path="/books" element={<Books allBooks={allBooks} user={user} reservations={reservations} setReservations={setReservations} />} />
 				<Route path="/books/:id" element={<SingleBook allBooks={allBooks} setAllBooks={setAllBooks} searchResults={searchResults} />} />
 				<Route path="/books/search/?" element={<Search allBooks={allBooks} searchResults={searchResults} setSearchResults={setSearchResults} />} />
 				<Route path="/register" element={<Register />} />
