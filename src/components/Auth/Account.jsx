@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 const Account = ({ user }) => {
 	return (
@@ -10,6 +11,7 @@ const Account = ({ user }) => {
 						<h4>Last Name: <span className="userData">{user.lastname}</span></h4>
 						<h4>Email: <span className="userData">{user.email}</span></h4>
 						<h4>ID: <span className="userData">{user.id}</span></h4>
+						<h4>Current Reservations: <Link to="/reservations"><span className="userDataLink">{user.reservations.length}</span></Link></h4>
 					</>) : (
 					<h3>User not Logged in.</h3>
 				)

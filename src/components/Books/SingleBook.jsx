@@ -1,7 +1,7 @@
 import { all } from "axios"
-import { useNavigate, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 
-const SingleBook = ({ allBooks, setAllBooks, user }) => {
+const SingleBook = ({ allBooks, setAllBooks, user , makeReservation , checkReservation }) => {
 	const navigate = useNavigate()
 	const params = useParams()
 	const id = params.id * 1
@@ -30,13 +30,18 @@ const SingleBook = ({ allBooks, setAllBooks, user }) => {
 						<>
 							<span className="isAvailable">Available</span><br/>
 							{ user.id ? (
-							<button>Reserve</button>
+							<button onClick={() => { makeReservation(book) }}>Reserve</button>
 							) : (
 								null
 							)}
-						</>) : (
-							<span className="notAvailable">Currently Not Available</span>
-						)}
+						</>) : (<>{
+										checkReservation(book.id) ? (
+										<span className="notAvailable">Currently in your <Link className="isAvailable" to="/reservations">Reservations</Link></span>
+										):(
+										<span className="notAvailable">Currently Not Available</span>
+										)
+									}
+								</>)}
 						</h4>
 					</div>
 				</div>

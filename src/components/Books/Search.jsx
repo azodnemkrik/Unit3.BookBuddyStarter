@@ -41,8 +41,8 @@ const Search = ({ allBooks , searchResults , setSearchResults}) => {
                                 </Link>
                                 {
                                     book.available ? (
-                                        // <span className="isAvailable">Available</span>
-                                        <button onClick={() => checkOutBook()}>Checkout Book</button>
+                                        <span className="isAvailable">Available</span>
+                                        // <button onClick={() => checkOutBook()}>Checkout Book</button>
                                     ) : (
                                         <span className="notAvailable">Currently Not Available</span>)
                                 }

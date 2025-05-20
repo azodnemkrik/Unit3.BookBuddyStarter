@@ -28,7 +28,7 @@ function App() {
 		const fetchBooks = async () => {
 			try {
 				const { data } = await axios.get("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books")
-				// console.log(data)
+				console.log(data)
 				setAllBooks(data)
 			} catch (error) {
 				console.error(error)
@@ -84,6 +84,46 @@ function App() {
 		fetchReservations(window.localStorage.getItem("token"))
 	}, [user.id , reservations.length])
 
+
+	// functions from Books.jsx <-START->
+		const searchForBooks = (formData) => {
+		const target = formData.get("searchBar").toLowerCase()
+		if (target !== "") {
+			// console.log("target:", target)
+			navigate(`/books/search/?book=${target}`)
+		}
+	}
+
+	const makeReservation = async (book) => {
+		console.log(`Attempting to reserve book #${book.id}`)
+		const reservation = {
+			bookId: book.id
+		}
+		try {
+			const { data } = await axios.post("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/reservations", reservation, {
+				headers: {
+					"Authorization": `Bearer ${window.localStorage.getItem("token")}`
+				}
+			})
+			console.log(data)
+			setReservations([...reservations, data])
+			console.log("pathname:", pathname)
+			navigate(pathname)
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+	const checkReservation = (bookid) => {
+		if(user.id) {
+		return reservations.find((reservation) => {
+			return reservation.bookid === bookid
+		})
+		}
+	}
+	// functions from Books.jsx <-END->
+
+
 	// Displayed Items	
 	return (
 		<div>
@@ -110,10 +150,11 @@ function App() {
 				)
 			}
 
+
 			<Routes>
 				<Route path="/" element={<Home allBooks={allBooks} user={user}/>} />
-				<Route path="/books" element={<Books allBooks={allBooks} user={user} reservations={reservations} setReservations={setReservations} />} />
-				<Route path="/books/:id" element={<SingleBook allBooks={allBooks} setAllBooks={setAllBooks} searchResults={searchResults} user={user}/>} />
+				<Route path="/books" element={<Books allBooks={allBooks} user={user} reservations={reservations} setReservations={setReservations} searchForBooks={searchForBooks} makeReservation={makeReservation} checkReservation={checkReservation} />} />
+				<Route path="/books/:id" element={<SingleBook allBooks={allBooks} setAllBooks={setAllBooks} searchResults={searchResults} user={user} makeReservation={makeReservation} checkReservation={checkReservation} />} />
 				<Route path="/books/search/?" element={<Search allBooks={allBooks} searchResults={searchResults} setSearchResults={setSearchResults} />} />
 				<Route path="/register" element={<Register />} />
 				<Route path="/reservations" element={<Reservations user={user} reservations={reservations} setReservations={setReservations}/>} />
