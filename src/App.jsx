@@ -107,7 +107,7 @@ function App() {
 			console.log(data)
 			setReservations([...reservations, data])
 			// console.log("pathname:", pathname)
-			navigate(pathname)
+			// navigate(pathname)
 		} catch (error) {
 			console.error(error)
 		}
@@ -153,7 +153,7 @@ function App() {
 				<Route path="/" element={<Home allBooks={allBooks} user={user} />} />
 				<Route path="/books" element={<Books allBooks={allBooks} user={user} reservations={reservations} setReservations={setReservations} searchForBooks={searchForBooks} makeReservation={makeReservation} checkReservation={checkReservation} />} />
 				<Route path="/books/:id" element={<SingleBook allBooks={allBooks} setAllBooks={setAllBooks} searchResults={searchResults} user={user} makeReservation={makeReservation} checkReservation={checkReservation} />} />
-				<Route path="/books/search/?" element={<Search allBooks={allBooks} searchResults={searchResults} setSearchResults={setSearchResults} />} />
+				<Route path="/books/search/?" element={<Search allBooks={allBooks} searchResults={searchResults} setSearchResults={setSearchResults} makeReservation={makeReservation} checkReservation={checkReservation} user={user} />} />
 				<Route path="/register" element={<Register />} />
 				<Route path="/reservations" element={<Reservations user={user} reservations={reservations} setReservations={setReservations} />} />
 				<Route path="/account/:id" element={<Account user={user} />} />

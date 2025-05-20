@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate, useSearchParams } from "react-router-dom"
 
-const Search = ({ allBooks , searchResults , setSearchResults}) => {
+const Search = ({ allBooks, searchResults, setSearchResults , makeReservation , checkReservation , user }) => {
     const [searchParams, setSearchParams] = useSearchParams()
     const navigate = useNavigate()
 
@@ -39,11 +39,25 @@ const Search = ({ allBooks , searchResults , setSearchResults}) => {
                                         <img className="bookImage" src={book.coverimage} />
                                     </div>
                                 </Link>
-                                {
-                                    book.available ? (
+                                {book.available ? (
+                                    <>
                                         <span className="isAvailable">Available</span>
-                                    ) : (
-                                        <span className="notAvailable">Currently Not Available</span>)
+                                        {
+                                            user.id ? (
+                                                <button onClick={() => { makeReservation(book) }}>Reserve</button>
+                                            ) : (
+                                                null
+                                            )
+                                        }
+                                    </>
+                                ) : (
+                                    <>{
+                                        checkReservation(book.id) ? (
+                                            <span className="notAvailable">Currently in your <Link className="isAvailable" to="/reservations">Reservations</Link></span>
+                                        ) : (
+                                            <span className="notAvailable">Currently Not Available</span>
+                                        )
+                                    }</>)
                                 }
                             </div>
                         )
