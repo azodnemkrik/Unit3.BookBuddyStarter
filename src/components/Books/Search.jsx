@@ -12,13 +12,13 @@ const Search = ({ allBooks , searchResults , setSearchResults}) => {
         const result = allBooks.filter((book) => {
             return book.title.toLowerCase().includes(nameSearch)
         })
-        console.log("result", result)
+        // console.log("result", result)
         setSearchResults(result)
     }, [allBooks])
 
 
     const clearSearch = () => {
-        console.log("clearSearch")
+        // console.log("clearSearch")
         setSearchResults([])
         navigate("/books")
     }
@@ -42,7 +42,6 @@ const Search = ({ allBooks , searchResults , setSearchResults}) => {
                                 {
                                     book.available ? (
                                         <span className="isAvailable">Available</span>
-                                        // <button onClick={() => checkOutBook()}>Checkout Book</button>
                                     ) : (
                                         <span className="notAvailable">Currently Not Available</span>)
                                 }

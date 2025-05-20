@@ -51,12 +51,13 @@ nav a:hover {
 .selected {
 	color: #74b362;
 	text-decoration: underline #74b362;
-	/* border-bottom: 1px solid white; */
 }
 
 .requiresLogin {
 	color: #999999;
 }
+
+
 
 /* HOME */
 .homeContainer {
@@ -69,6 +70,7 @@ nav a:hover {
 	text-decoration: underline;
 	color:#005f00;
 }
+
 
 
 /* ALL BOOKS */
@@ -99,6 +101,8 @@ nav a:hover {
 	width: 250px;
 	/* height: 325px; */
 }
+
+
 
 /* SINGLE BOOK */
 .singleBookContainer {
@@ -147,12 +151,15 @@ nav a:hover {
 	font-style: italic;
 }
 
+
+
 /* RESERVATION */
 .reservationContainer{
 }
 .reservationID{
 	text-align: center;
 }
+
 
 
 /* SEARCH */
@@ -205,6 +212,8 @@ nav a:hover {
 	align-self: center;
 }
 
+
+
 /* REGISTER */
 .registerContainer {
 	display: flex;
@@ -247,6 +256,7 @@ nav a:hover {
 }
 
 
+
 /* ACCOUNT */
 .userData {
 	color: #149240;
@@ -258,30 +268,4 @@ nav a:hover {
 	font-weight: 600;
 	text-decoration: underline !important;
 	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
-}
-
-
-/* TEMPORARY STYLES */
-.accountComponent {
-	background-color: red;
-}
-
-.booksComponent {
-	background-color: orange;
-}
-
-.loginComponent {
-	background-color: yellow;
-}
-
-.navigationsComponent {
-	background-color: green;
-}
-
-.registerComponent {
-	background-color: blue;
-}
-
-.singleBookComponent {
-	background-color: indigo;
 }

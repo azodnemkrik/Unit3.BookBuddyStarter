@@ -53,21 +53,4 @@ const Register = () => {
 	)
 }
 
-/*
-firstname	
-string
-the first name of the user
-
-lastname	
-string
-the last name of the user
-
-email
-required
-string
-the email of the user
-
-password
-*/
-
 export default Register

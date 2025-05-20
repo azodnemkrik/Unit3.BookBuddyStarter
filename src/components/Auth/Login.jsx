@@ -14,11 +14,10 @@ const Login = ({ authenticate }) => {
 		}
 		try {
 			const data = await axios.post("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/login", user)
-			console.log("\nLogin.jsx - token added to local storage, then PULLED from local storage, then sent to App.jsx:", data.data.token)
 			window.localStorage.setItem("token", data.data.token)
 			authenticate(window.localStorage.getItem("token"))
 		} catch (error) {
-			console.log(error.status)
+			console.error(error.status)
 			if(error.status == 401) {
 				alert("Your login combination was not found in our database.\nPlease re-check your credentials or create a new account.")
 			} else if (error.status == 400){

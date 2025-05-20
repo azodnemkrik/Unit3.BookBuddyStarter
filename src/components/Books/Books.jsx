@@ -1,45 +1,9 @@
-import axios from "axios"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import gsap from "gsap";
 import { useGSAP } from '@gsap/react'
 
-const Books = ({ allBooks, user, reservations, setReservations , searchForBooks , makeReservation , checkReservation }) => {
-	const navigate = useNavigate()
+const Books = ({ allBooks, user , searchForBooks , makeReservation , checkReservation }) => {
 
-	// const searchForBooks = (formData) => {
-	// 	const target = formData.get("searchBar").toLowerCase()
-	// 	if (target !== "") {
-	// 		// console.log("target:", target)
-	// 		navigate(`/books/search/?book=${target}`)
-	// 	}
-	// }
-
-	// const makeReservation = async (book) => {
-	// 	console.log(`Attempting to reserve book #${book.id}`)
-	// 	const reservation = {
-	// 		bookId: book.id
-	// 	}
-	// 	try {
-	// 		const { data } = await axios.post("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/reservations", reservation, {
-	// 			headers: {
-	// 				"Authorization": `Bearer ${window.localStorage.getItem("token")}`
-	// 			}
-	// 		})
-	// 		console.log(data)
-	// 		setReservations([...reservations, data])
-	// 		navigate("/books")
-	// 	} catch (error) {
-	// 		console.error(error)
-	// 	}
-	// }
-
-	// const checkReservation = (bookid) => {
-	// 	if(user.id) {
-	// 	return reservations.find((reservation) => {
-	// 		return reservation.bookid === bookid
-	// 	})
-	// 	}
-	// }
 	useGSAP(() => {
 		allBooks.length > 0 ? (
 			gsap.from(".book", {
@@ -50,6 +14,8 @@ const Books = ({ allBooks, user, reservations, setReservations , searchForBooks 
 		)
 	})
 	
+	// Functions moved to App.jsx
+
 	return (
 		<div>
 			<h3>Search for a book title:</h3>

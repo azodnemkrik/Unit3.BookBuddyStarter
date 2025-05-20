@@ -8,7 +8,6 @@ const SingleBook = ({ allBooks, setAllBooks, user , makeReservation , checkReser
 	const book = allBooks.find((book) => {
 		return book.id === id
 	})
-	// console.log("book:", book)
 
 	const backToLibrary = () => {
 		navigate("/books")

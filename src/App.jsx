@@ -20,7 +20,7 @@ function App() {
 
 	const navigate = useNavigate()
 	const location = useLocation()
-	const {pathname} = location
+	const { pathname } = location
 
 
 	// Retrieve Books
@@ -28,14 +28,14 @@ function App() {
 		const fetchBooks = async () => {
 			try {
 				const { data } = await axios.get("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books")
-				console.log(data)
+				// console.log(data)
 				setAllBooks(data)
 			} catch (error) {
 				console.error(error)
 			}
 		}
 		fetchBooks()
-	}, [ reservations.length ])
+	}, [reservations.length])
 
 
 
@@ -64,7 +64,7 @@ function App() {
 		if (loggedInToken) {
 			authenticate(loggedInToken)
 		}
-	}, [user.id , reservations.length])
+	}, [user.id, reservations.length])
 
 	// Reservations
 	useEffect(() => {
@@ -82,11 +82,10 @@ function App() {
 			}
 		}
 		fetchReservations(window.localStorage.getItem("token"))
-	}, [user.id , reservations.length])
+	}, [user.id, reservations.length])
 
 
-	// functions from Books.jsx <-START->
-		const searchForBooks = (formData) => {
+	const searchForBooks = (formData) => {
 		const target = formData.get("searchBar").toLowerCase()
 		if (target !== "") {
 			// console.log("target:", target)
@@ -107,7 +106,7 @@ function App() {
 			})
 			console.log(data)
 			setReservations([...reservations, data])
-			console.log("pathname:", pathname)
+			// console.log("pathname:", pathname)
 			navigate(pathname)
 		} catch (error) {
 			console.error(error)
@@ -115,20 +114,19 @@ function App() {
 	}
 
 	const checkReservation = (bookid) => {
-		if(user.id) {
-		return reservations.find((reservation) => {
-			return reservation.bookid === bookid
-		})
+		if (user.id) {
+			return reservations.find((reservation) => {
+				return reservation.bookid === bookid
+			})
 		}
 	}
-	// functions from Books.jsx <-END->
 
 
 	// Displayed Items	
 	return (
 		<div>
 			<h1>Book Buddy - The Library App</h1>
-			<Navigation user={user} pathname={pathname}/>
+			<Navigation user={user} pathname={pathname} />
 			{
 				location.pathname === "/register" ? (
 					null
@@ -152,12 +150,12 @@ function App() {
 
 
 			<Routes>
-				<Route path="/" element={<Home allBooks={allBooks} user={user}/>} />
+				<Route path="/" element={<Home allBooks={allBooks} user={user} />} />
 				<Route path="/books" element={<Books allBooks={allBooks} user={user} reservations={reservations} setReservations={setReservations} searchForBooks={searchForBooks} makeReservation={makeReservation} checkReservation={checkReservation} />} />
 				<Route path="/books/:id" element={<SingleBook allBooks={allBooks} setAllBooks={setAllBooks} searchResults={searchResults} user={user} makeReservation={makeReservation} checkReservation={checkReservation} />} />
 				<Route path="/books/search/?" element={<Search allBooks={allBooks} searchResults={searchResults} setSearchResults={setSearchResults} />} />
 				<Route path="/register" element={<Register />} />
-				<Route path="/reservations" element={<Reservations user={user} reservations={reservations} setReservations={setReservations}/>} />
+				<Route path="/reservations" element={<Reservations user={user} reservations={reservations} setReservations={setReservations} />} />
 				<Route path="/account/:id" element={<Account user={user} />} />
 			</Routes>
 		</div>
