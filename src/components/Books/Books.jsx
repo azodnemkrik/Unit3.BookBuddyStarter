@@ -2,19 +2,17 @@ import { Link } from "react-router-dom"
 import gsap from "gsap";
 import { useGSAP } from '@gsap/react'
 
-const Books = ({ allBooks, user , searchForBooks , makeReservation , checkReservation }) => {
+const Books = ({ allBooks, user, searchForBooks, makeReservation, checkReservation }) => {
 
 	useGSAP(() => {
 		allBooks.length > 0 ? (
 			gsap.from(".book", {
-				duration:1 , autoAlpha: 0 , rotation:90, scale: 0 , y: 300 , ease: 'power4.inOut' , boxShadow: "0px 0px 0px 0px rgba(0, 0, 0, 0)" , stagger: .05 
+				duration: 1, autoAlpha: 0, rotation: 90, scale: 0, y: 300, ease: 'power4.inOut', boxShadow: "0px 0px 0px 0px rgba(0, 0, 0, 0)", stagger: .05
 			})
-		):(
-			console.log("Loading...")
+		) : (
+			<h3>Loading...</h3>
 		)
 	})
-	
-	// Functions moved to App.jsx
 
 	return (
 		<div>
@@ -49,9 +47,9 @@ const Books = ({ allBooks, user , searchForBooks , makeReservation , checkReserv
 								) : (
 									<>{
 										checkReservation(book.id) ? (
-										<span className="notAvailable">Currently in your <Link className="isAvailable" to="/reservations">Reservations</Link></span>
-										):(
-										<span className="notAvailable">Currently Not Available</span>
+											<span className="notAvailable">Currently in your <Link className="isAvailable" to="/reservations">Reservations</Link></span>
+										) : (
+											<span className="notAvailable">Currently Not Available</span>
 										)
 									}</>)
 								}

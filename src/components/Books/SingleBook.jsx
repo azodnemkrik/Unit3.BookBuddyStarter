@@ -1,4 +1,3 @@
-import { all } from "axios"
 import { Link, useNavigate, useParams } from "react-router-dom"
 
 const SingleBook = ({ allBooks, setAllBooks, user , makeReservation , checkReservation }) => {

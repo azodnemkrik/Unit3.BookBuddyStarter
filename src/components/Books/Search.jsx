@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { Link, useNavigate, useSearchParams } from "react-router-dom"
 
 const Search = ({ allBooks, searchResults, setSearchResults , makeReservation , checkReservation , user }) => {

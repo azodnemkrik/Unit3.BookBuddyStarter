@@ -106,8 +106,8 @@ function App() {
 			})
 			console.log(data)
 			setReservations([...reservations, data])
-			// console.log("pathname:", pathname)
-			// navigate(pathname)
+			// console.log("location:", location)
+			navigate(location)
 		} catch (error) {
 			console.error(error)
 		}
