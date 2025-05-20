@@ -1,3 +1,4 @@
+// FINAL VERSION BEFORE REMOVING ALL CONSOLE LOGS
 import { useEffect, useState } from "react"
 import Account from "./components/Auth/Account"
 import Books from "./components/Books/Books"
