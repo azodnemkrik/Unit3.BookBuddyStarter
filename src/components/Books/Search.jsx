@@ -6,19 +6,16 @@ const Search = ({ allBooks, searchResults, setSearchResults , makeReservation , 
     const navigate = useNavigate()
 
     const nameSearch = searchParams.get("book").toLowerCase()
-    console.log("nameSearch", nameSearch)
 
     useEffect(() => {
         const result = allBooks.filter((book) => {
             return book.title.toLowerCase().includes(nameSearch)
         })
-        // console.log("result", result)
         setSearchResults(result)
     }, [allBooks])
 
 
     const clearSearch = () => {
-        // console.log("clearSearch")
         setSearchResults([])
         navigate("/books")
     }

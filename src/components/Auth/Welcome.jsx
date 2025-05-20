@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom"
 
 const Welcome = ({ user, setUser }) => {
-    // console.log("user:", user)
     const navigate = useNavigate()
 
     const logOut = () => {

@@ -17,11 +17,10 @@ const Register = () => {
 		}
 		try {
 			const {data} = await axios.post("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/register", user)
-			console.log("registering data:", data)
 			alert("Thank you for signing up!")
 			navigate("/")
 		} catch (error) {
-			console.error("error:", error)
+			console.error(error)
 		}
 	}
 

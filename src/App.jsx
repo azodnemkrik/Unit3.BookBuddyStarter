@@ -1,4 +1,3 @@
-// FINAL VERSION BEFORE REMOVING ALL CONSOLE LOGS
 import { useEffect, useState } from "react"
 import Account from "./components/Auth/Account"
 import Books from "./components/Books/Books"
@@ -29,7 +28,6 @@ function App() {
 		const fetchBooks = async () => {
 			try {
 				const { data } = await axios.get("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books")
-				// console.log(data)
 				setAllBooks(data)
 			} catch (error) {
 				console.error(error)
@@ -43,7 +41,6 @@ function App() {
 
 	// Authentication
 	const authenticate = async (token) => {
-		// console.log(authenticate(`${token}`))
 		try {
 			if (!token) {
 				throw Error("No token found!")
@@ -53,7 +50,6 @@ function App() {
 					"Authorization": `Bearer ${token}`
 				}
 			})
-			// console.log("Authenticate response:", response.data)
 			setUser(response.data)
 		} catch (error) {
 			console.error(error)
@@ -76,7 +72,6 @@ function App() {
 						"Authorization": `Bearer ${token}`
 					}
 				})
-				console.log("reservations:", data)
 				setReservations(data)
 			} catch (error) {
 				console.error(error)
@@ -89,13 +84,11 @@ function App() {
 	const searchForBooks = (formData) => {
 		const target = formData.get("searchBar").toLowerCase()
 		if (target !== "") {
-			// console.log("target:", target)
 			navigate(`/books/search/?book=${target}`)
 		}
 	}
 
 	const makeReservation = async (book) => {
-		console.log(`Attempting to reserve book #${book.id}`)
 		const reservation = {
 			bookId: book.id
 		}
@@ -105,9 +98,7 @@ function App() {
 					"Authorization": `Bearer ${window.localStorage.getItem("token")}`
 				}
 			})
-			console.log(data)
 			setReservations([...reservations, data])
-			// console.log("location:", location)
 			navigate(location)
 		} catch (error) {
 			console.error(error)
